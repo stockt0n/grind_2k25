@@ -1,0 +1,55 @@
+/* there are two main types of units in css
+
+   1. absolute: fixed values and dont change regardless of the screen size (Ex. pt, px, cm, mm)
+   2. relative: based on other values such as font size or the size of the screen, (ex. %, em, rem, vw, vh)
+
+   1. % : are flexible, changes accordingly.
+   2. px : will remain same throughout.
+   3. vw: viewport width
+   4. vh: viewport height
+   5. em: relative to parent height (1em=browser default size, often 16px).
+   6. rem:  relative to root element, parent sizing doesnt matter.
+
+   vmin: smaller value between viewport width and height
+   vmax: larger value between viewport width and height
+
+
+*/
+html {
+   font-size: 100%;
+}
+
+/* simple responsive design */
+.pt {
+   width: 50%;
+   border: .1em solid;
+}
+.px {
+   width: 50px;
+   border: 1px solid;
+}
+
+/* set parent div size to something other than default */
+.parent {
+   width: 700px;
+}
+/* the relative size changes , as it now depends on parent div size which is set to 700px */
+.ptt {
+   width: 50%;
+   border: 1px solid;
+}
+.pxx {
+   width: 50px;
+   border: 1px solid;
+}
+
+/* font sizing */
+.para-parent {
+   font-size: 1em;
+}
+.para {
+   font-size: 1.2em;
+}
+.para-sp {
+   font-size: 1.5em;
+}
