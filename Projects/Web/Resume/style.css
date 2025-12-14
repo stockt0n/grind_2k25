@@ -1,0 +1,112 @@
+/* importing font via css is not recommended, it blocks rendering and slower than <link> */
+
+html {
+   font-family: 'Poppins', sans-serif;
+}
+
+/* reset the css */
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+  
+}
+.navbar {
+   background: linear-gradient(145deg, rgb(4, 0, 39), rgb(65, 1, 76));
+   display: flex;
+   /* justify-content: space-evenly; not use this with margin: auto on single element. */
+   align-items: center;
+   
+   min-height: 10vh;
+}
+a {
+   color: white;
+   text-decoration: none;
+   font-size: 1.1em;
+   margin-right: 2vw;
+}
+a:hover {
+   color:rgb(233, 106, 21);
+   transition: color 0.3s ease-in-out;
+}
+
+.logo {
+   margin-right: auto;
+   margin-left: 2vw;
+}
+
+.container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   width: 80%;
+   gap: 5vw; 
+
+   /* this --> */
+   /* margin-left: auto;
+   margin-right: auto;
+   margin-top: 5vh; */
+
+   /* can be replaced by this */
+   margin: 5vh auto;
+
+}
+
+.text {
+   flex-direction: column;
+   align-items: flex-start;
+}
+/* doesnt work, edit: now works and i have descripted it */
+.img {
+   /* remember the mistake that the container width is set to 80% and we are trying to modify viewport width, so it wont work. */
+   /* width: 55vw; */
+
+   width: 155%;
+   max-height: 300px;
+   height: auto;
+   object-fit: cover;
+}
+.span {
+   float: left;
+   font-size: 3em;
+   line-height: 1;
+   padding-right: 0.2em;
+   color: red;
+}
+
+footer {
+   background: linear-gradient(145deg, rgb(4, 0, 39), rgb(65, 1, 76));
+}
+
+.footer-nav {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   min-height: 10vh;  
+}
+.footer-nav > a {
+   color:rgb(174, 174, 174);
+
+   font-size: 1em;
+}
+.footer-nav >a:hover {
+   color: rgb(107, 107, 107);
+}
+
+
+
+p {
+   line-height: 1.6;
+}
+
+/* make the goddam footer at the bottom */
+body {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+main {
+   flex: 1;
+}
