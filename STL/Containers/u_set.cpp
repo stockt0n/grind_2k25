@@ -22,5 +22,19 @@ int main() {
 
    // and all similar methods as other containers
 
+   int size = 5;
+   int arr[size] = {1,2,2,4,5};
+
+
+   // woosh we can remove similiar elements from the array and make an array of unique elements
+   unordered_set<int> s2;
+   for(int i = 0; i < size; i++) {
+      s2.insert(arr[i]);
+   }
+   cout << endl;
+   for(auto& p: s2) {
+      cout << p << " ";
+   }
+
    return 0;
 }
