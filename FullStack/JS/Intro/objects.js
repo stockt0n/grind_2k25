@@ -67,3 +67,23 @@ for(let key in user1) {
    console.log(key, user1[key]); // key->property name, person[key]->value
 }
 
+
+// js objects are stored by reference not by value
+let obj1 = {value:10,};
+let obj2 = obj1;
+// now they both point to the same mem location
+obj2.value = 20;
+
+console.log(obj1.value); // obj1's value property is effected
+
+// to copy properly we do
+let obj3 = Object.assign({}, obj1);
+obj3.value = 30;
+console.log(`obj1.value: ${obj1.value}, obj3.value ${obj3.value}`);
+
+// in more modern way
+let obj4 = {...obj1};
+console.log(obj4.value);
+
+
+
