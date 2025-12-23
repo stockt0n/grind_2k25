@@ -26,3 +26,44 @@ let mathmod = {
 
 let sum = mathmod.sum(5, 10);
 console.log(sum);
+
+// add more properties
+mathmod.sub = function(a, b) {return a-b;};
+let sub = mathmod.sub(10, 5);
+console.log(sub);
+
+
+// delete a property
+delete mathmod.sub;
+
+console.log(mathmod);
+
+// nested objects
+let student = {
+   name: 'rishabh',
+   roll: 55,
+   age: 95,
+   address: {
+      city: 'bombay',
+      pincode: 0o12345,
+   },
+};
+// access nested data
+console.log(student.address.city);
+
+// this keyword
+// this refers to the object that is calling the method, means we can access the object's properties
+
+let user1 = {
+   name: 'john',
+   greet: function () {
+      console.log('hello '+ this.name);
+   },
+};
+user1.greet();
+
+// for-in loops, 
+for(let key in user1) {
+   console.log(key, user1[key]); // key->property name, person[key]->value
+}
+
