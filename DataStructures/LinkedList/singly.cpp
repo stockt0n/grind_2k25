@@ -56,6 +56,30 @@ Node* insertAtBegin(string data, struct Node* temp) {
 }
 
 
+// insert at the end of the list (data, targetList)
+Node* insertAtEnd(string data, struct Node* temp) {
+   struct Node* ptr = new Node;
+   ptr->data = data;
+   ptr->next = nullptr;
+
+   // if list is empty, new node becomes the head
+   if(temp == nullptr) {
+      return ptr;
+   }
+
+   // traverse to the last node
+   struct Node* p = temp;
+   while(p->next != nullptr) {
+      p = p->next;
+   }
+
+   // link new node at the end
+   p->next = ptr;
+   return temp;
+}
+
+
+
 int main() {
    // create a node and allocate it memory using `new`
    Node* list = new Node;
