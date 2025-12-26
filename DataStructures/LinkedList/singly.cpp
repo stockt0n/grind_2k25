@@ -189,6 +189,23 @@ Node* insertAtPos(string data, struct Node* temp, int pos) {
 }
 
 
+// reverse a singly linked list iteratively and return new head
+Node* reverseList(struct Node* head) {
+   Node* prev = nullptr;
+   Node* curr = head;
+   Node* next = nullptr;
+
+   while(curr != nullptr) {
+      next = curr->next;
+      curr->next = prev;
+      prev = curr;
+      curr = next;
+   }
+
+   return prev;
+}
+
+
 
 int main() {
    // create a node and allocate it memory using `new`
@@ -216,6 +233,12 @@ int main() {
    item1 = insertAtBegin("item4", item1);
    traverseList(item1);
 
+   cout << endl;
+   // reverse the list and print
+   item1 = reverseList(item1);
+   traverseList(item1);
+
+   cout << endl;
 
    delete list;
    delete item1;
