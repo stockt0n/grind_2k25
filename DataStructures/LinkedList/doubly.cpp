@@ -33,6 +33,44 @@ void printList(struct Node* temp) {
    cout << endl;
 }
 
+// insertAtBegin method
+
+void insertAtBegin(Node*& temp, int data) {
+   // if the head pointer is empty we create a node
+   if(temp == nullptr) {
+      temp = new Node{data, nullptr, nullptr};
+      return;
+   }
+
+   // if it has nodes we create new node
+   Node* ptr = new Node{data, temp, nullptr};
+
+   // bette alt
+   temp->prev = ptr;
+   temp = ptr; // now make the 
+
+   return;
+}
+
+// delete at begin
+void deleteBegin(Node*& temp) {
+   // lets check if the list is not empty, since we dont want to delete stuff on empty mem
+   if(temp == nullptr) {
+      return; // list is empty so return
+   }
+   // create a node and assign it to head so we can free that mem location
+   Node* ptr = temp;
+   temp = temp->next; // now update the head
+   if(temp != nullptr) temp->prev = nullptr; // also update new head's prev as nullptr so it won't point to the dangling memory
+
+
+   delete ptr;
+   return;
+}
+
+
+
+
 int main() {
    struct Node* head = new Node;
    head->data = 10;
@@ -43,12 +81,15 @@ int main() {
    item2->next = nullptr;
 
    // update location references
-   item2->prev = head;
    head->next = item2;
-
-
+   insertAtBegin(head, 5);
+   
    printList(head);
    
+
+   deleteBegin(head);
+
+   printList(head);
    // free the mem
    delete head;
    delete item2;
