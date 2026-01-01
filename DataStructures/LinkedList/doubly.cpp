@@ -63,7 +63,6 @@ void deleteBegin(Node*& temp) {
    temp = temp->next; // now update the head
    if(temp != nullptr) temp->prev = nullptr; // also update new head's prev as nullptr so it won't point to the dangling memory
 
-
    delete ptr;
    return;
 }
