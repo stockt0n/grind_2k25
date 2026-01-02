@@ -67,10 +67,35 @@ int main() {
    else {cout << "key found in the map!"<<endl;}
 
    if(it!=freq.end()) {
-      cout << it->second;
+      cout << it->second << endl;
    }
 
+   // at method
+   // accessing using [] might insert to the map and sometimes it can check out of the bounds
+   // so its better to use at() because it throws std::out_of_range exception and it does not insert anything to the map, just checks
+   cout << freq.at(3);
 
+   // erase
+   // if a key exists erase it from the map, if not, do nothing
+   freq.erase(3);
+
+   // erase using iterator : use when already have the location of the iterator
+   //    if (it != freq.end()) {
+   //    freq.erase(it);
+   // }
+
+   // avoiding tle using reserve
+   // if rehashing occurs multiple times it will cause performance issues so we should reserve some buckets in advanced
+   // freq.reserve(3000); should be done at after initialization
+   // load factor is defined as load_factor = size/bucket count; and max_load_factor is somewhat 1, when lf>mlf rehashing occurs
+   // ex- size = 8, bucket count = 9, lf = 1.125 which is > mlf so rehash
+
+   // if we know the size of the map in advanced such as how many elements will be there, in this case we can directly rehash
+   // freq.rehash(size), if hashing occurs all iterators of that map becomes invalid, so it should be called before inserting
+
+   // count()
+   // checks whether key exists or not in the map, does not insert anything, returns an integer
+
+   // char map
    
-
 }
