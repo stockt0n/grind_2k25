@@ -139,3 +139,54 @@ console.log(isPresent);
 
 // toggle(): if its in the list, remove it, if not add it
 p4.classList.toggle('paragraph');
+
+
+// creating dom elements
+// createElement(): browser allocates an element object, node exist only in memory it has no parent it causes zero reflow/paint, this is why creation is cheap
+
+const div = document.createElement("div");
+container.appendChild(div);
+// createTextNode: creates a node of text
+const text = document.createTextNode("hello world");
+p3.textContent = text.nodeValue;
+
+
+// form control (properties)
+// common form properties
+// input.value -> text
+// checkbox.checked = checkbox
+// radio.checked
+// select.value, select.selectedIndex, select.selectedOptions
+
+// every form control has
+// defaultValue, defaultChecked, value, checked it comes from html
+
+// setAttributes break the form, so always use properties for dom
+// form.reset() resets the entire form to default values
+
+// closest() starts at the object calling it, checks if this element matches the selector if yes return it if no moves to parentElement repeats untill the element is found
+
+const dltBtn = document.querySelector('.delete');
+const card = dltBtn.closest('.card');
+
+// document fragment: a container useful for looping dom creation, its a container where we can store the objects we want to add to the dom and since inserting it and appending is expensive we want to do multiple steps at once, this is why we use documentFragment
+const fragment = document.createDocumentFragment();
+const listItem = document.querySelector('.listItem');
+for (let i = 0; i < 100; i++) {
+  const li = document.createElement("li");
+  li.textContent = i;
+  fragment.appendChild(li);
+}
+
+listItem.appendChild(fragment);
+
+
+// node based traversal
+
+console.log(container.parentNode);
+console.log(container.parentElement);
+console.log(container.childNodes);
+console.log(container.firstChild);
+console.log(container.firstElementChild);
+console.log(container.children);
+console.log(container.nextElementSibling);
