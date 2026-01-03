@@ -1,41 +1,67 @@
 /*
-   document object model represents all page content as objects that can be modified.
+   dom is runtime data structure created by the browser.
 
-   the document object is the main entry point of a page, we can change and create anything on the page using it.
+   when a browser loads a webpage three things happen:
+      - first browser reads the hmtl and parses it, means converting the text into structural objects, leading into the creation of dom tree.
 
-   according to dom every html tag is an object, nested tags are children of the enclosing one, the text inside the tag is object as well.
+      - second, the browser parses css and creates cssom, separate tree that represents style.
+
+      -third the browser combines dom and cssom that creates the render tree which is rendered to the webpage.
+
+      js primarly interacts with dom and not html.
+      dom is an object graph living in the memory
+
+      every node tree has exactly one parent, except the root.
+      nodes can have multiple children.
+      order matters
+
+      each node has shared properties
+         nodeType
+         nodeName
+         nodeValue
+         parentName
+         childNodes
+
+
+      every dom tree has one root - `document`, it owns the entire tree, exposes entry points such as body, head, documentElement, and acts as a bridge between dom and js. nodeType = 9
+
+      element nodes represents html tags, nodeType === 1, nodeName === tagName, it can have children and attributes.
+
+      commentNode, type === 8, nodeName = #comment
+
 */
 
-document.body.style.background = 'black';
-document.body.style.color = 'white';
+// document is a global object, created by the browser
+console.log(document);
 
-// browser object model
+// print the state of the document, loading=dom is being built, interactive= dom is ready, resource may load, complete=everything loaded
+console.log(document.readyState);
 
-// const agent = navigator.userAgent;
-// console.log(agent);
+// defer: script downloaded in parallel, executes once the dom is parsed, order preserved
+// async:  executes as soon as its ready, order not guaranteed
 
-// const platform = navigator.platform;
-// console.log(platform);
 
-// for(let i = 0; i < document.body.childNodes.length; i++) {
-//    console.log(document.body.childNodes[i]);
-// }
+// before changing dom content we must obtain a refernce to a node
+const p1 = document.getElementById('p1'); // we made a reference to the p1 id element..
 
-// searching for an object in the dom
+// getElementById returns one element or null ids are unique by spec faster selector
 
-// getElementById: if an element has some id we can use this method, it returns a refernce to the element
-const para1 = document.getElementById('p1');
-if(para1) {
-   para1.style.color = 'gold';
+
+// getElementsByClassName: returns a HTMLCollection, live: auto update the dom once modified
+
+const items = document.getElementsByClassName('list');
+for(let i = 0; i < items.length; i++) {
+   items[i].style.color = '#3ece1aff';
 }
-// querySelectorAll(css): returns all elements with given argument, it returns a static NodeList, it allows for more complex selecting
-let elements = document.querySelectorAll('p');
-for(let elem of elements) {
-   console.log(elem.innerText);
+// its an array. indexed using [], has length but no array methods
+
+// getElementsByTagName: returns all elements by found tag, live, it can be called on any element
+const tagelements = document.getElementsByTagName('li');
+for(let i = 0; i < tagelements.length; i++) {
+   tagelements[i].style.fontSize = '32px';
 }
 
-// querySelector(css): returns the first element of the given css selector
-// innerHTML allows to get the html inside an element as a string
-para1.innerHTML = "the new body <hr/>";
+// HTMLCollection: returned by getElementsBy, live, element Nodes only
+// NodeList: returned by some new apis can be static or live may include non elements
+// the difference matters for performance
 
-// textContent: provides access to the text inside the element
